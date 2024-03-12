@@ -17,7 +17,7 @@ func main() {
 
 	e.GET("/ticket/:ticketID", serveTicketImage)
 
-	e.Logger.Fatal(e.Start(":8080"))
+    e.Logger.Fatal(e.Start("0.0.0.0:80"))
 }
 
 func serveTicketImage(c echo.Context) error {
