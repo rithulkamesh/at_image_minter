@@ -17,7 +17,7 @@ func main() {
 
 	e.GET("/ticket/:ticketID", serveTicketImage)
 
-    e.Logger.Fatal(e.Start("0.0.0.0:80"))
+	e.Logger.Fatal(e.Start("0.0.0.0:8080"))
 }
 
 func serveTicketImage(c echo.Context) error {
@@ -54,6 +54,9 @@ func serveTicketImage(c echo.Context) error {
 	if err != nil {
 		return err
 	}
+
+	c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
+	c.Response().Header().Set("Content-Type", "image/jpeg")
 
 	return c.Blob(http.StatusOK, "image/jpeg", buf.Bytes())
 }
