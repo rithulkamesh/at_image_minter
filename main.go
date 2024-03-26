@@ -81,8 +81,8 @@ func main() {
 func serveTicketImageVIP(c echo.Context) error {
 	ticketID := c.Param("ticketID")
 
-	// c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
-	// c.Response().Header().Set("Content-Type", "image/jpeg")
+	c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
+	c.Response().Header().Set("Content-Type", "image/jpeg")
 
 	buf, err := generateImage(ticketID, true)
 	if err != nil {
@@ -95,8 +95,8 @@ func serveTicketImageVIP(c echo.Context) error {
 func serveTicketImage(c echo.Context) error {
 	ticketID := c.Param("ticketID")
 
-	// c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
-	// c.Response().Header().Set("Content-Type", "image/jpeg")
+	c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
+	c.Response().Header().Set("Content-Type", "image/jpeg")
 
 	buf, err := generateImage(ticketID, false)
 	if err != nil {
