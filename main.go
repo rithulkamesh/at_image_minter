@@ -55,8 +55,8 @@ func serveTicketImage(c echo.Context) error {
 		return err
 	}
 
-	// c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
-	// c.Response().Header().Set("Content-Type", "image/jpeg")
+	c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
+	c.Response().Header().Set("Content-Type", "image/jpeg")
 
 	return c.Blob(http.StatusOK, "image/jpeg", buf.Bytes())
 }
