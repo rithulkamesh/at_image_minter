@@ -27,7 +27,7 @@ func generateImage(ticketID string, vip bool) (*bytes.Buffer, error) {
 		return nil, err
 	}
 
-	qrcodeBytes, err := qrcode.Encode("https://at-ticket-scan.vercel.app/api/qr/"+ticketID, qrcode.Medium, 300)
+	qrcodeBytes, err := qrcode.Encode("https://at-ticket-scan.vercel.app/scanning/"+ticketID, qrcode.Medium, 300)
 	if err != nil {
 		return nil, err
 	}
