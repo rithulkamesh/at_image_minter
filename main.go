@@ -33,7 +33,7 @@ func serveTicketImage(c echo.Context) error {
 		return err
 	}
 
-	qrcodeBytes, err := qrcode.Encode(ticketID, qrcode.Medium, 300)
+	qrcodeBytes, err := qrcode.Encode("https://at-ticket-scan.vercel.app/api/qr/"+ticketID, qrcode.Medium, 300)
 	if err != nil {
 		return err
 	}
@@ -55,8 +55,8 @@ func serveTicketImage(c echo.Context) error {
 		return err
 	}
 
-	c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
-	c.Response().Header().Set("Content-Type", "image/jpeg")
+	// c.Response().Header().Set("Content-Disposition", "attachment; filename="+ticketID+".jpg")
+	// c.Response().Header().Set("Content-Type", "image/jpeg")
 
 	return c.Blob(http.StatusOK, "image/jpeg", buf.Bytes())
 }
